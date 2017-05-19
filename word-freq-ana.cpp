@@ -26,8 +26,12 @@ int main(){
                 }
             }
         }
-        for(int i = 0; i<100; i++){
-            cout << *(words[i]) << endl;
-        }
     }
+    int charcount = 0;
+    for(int i = 0; i < words.size(); i++){
+        charcount += (*(words[i])).length();
+    }
+    double meanLength = charcount;
+    meanLength/=words.size();
+    cout << "Mean word length: " << meanLength << endl;
 }
