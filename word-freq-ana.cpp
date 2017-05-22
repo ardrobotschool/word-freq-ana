@@ -3,15 +3,15 @@
 #include <vector>
 #include <string>
 #include <cctype>
+#include <array>
 
 using namespace std;
 
 int main(){
-    int charLim = 32;
     vector<string*> words;
-    vector<string*> * wordsByLength[charLim];
+    array<vector<string*> *, 32> wordsByLength;
     
-    char filename[charLim];
+    char filename[32];
     cout << "Enter filename: ";
     cin >> filename;
     ifstream is(filename);
@@ -30,6 +30,11 @@ int main(){
             }
         }
     }
+    else{
+        cout << "File could not be opened." << endl;
+        return 0;
+    }
+    
     //Calculating mean word length:
     int charcount = 0;
     for(int i = 0; i < words.size(); i++){
@@ -40,13 +45,13 @@ int main(){
     cout << "Mean word length: " << meanLength << endl;
     
     //Categorizing words by length:
-    for(int i = 0; i < charLim; i++){
+    for(int i = 0; i < wordsByLength.size(); i++){
         wordsByLength[i] = new vector<string*>;
     }
     for(int i = 0; i < words.size(); i++){
         wordsByLength[words[i]->length()]->push_back(words[i]);
     }
-    for(int i = 0; i < charLim; i++){
+    for(int i = 0; i < wordsByLength.size(); i++){
         if(!wordsByLength[i]->empty()){
             cout << i << "-letter words: " << wordsByLength[i]->size() << endl;
         }
@@ -56,7 +61,7 @@ int main(){
     for(int i = 0; i < words.size(); i++){
         delete words[i];
     }
-    for(int i = 0; i < charLim; i++){
+    for(int i = 0; i < wordsByLength.size(); i++){
         delete wordsByLength[i];
     }
 }
