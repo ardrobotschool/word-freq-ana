@@ -7,10 +7,11 @@
 using namespace std;
 
 int main(){
+    int charLim = 32;
     vector<string*> words;
-    vector<string*> * wordsByLength[32];
+    vector<string*> * wordsByLength[charLim];
     
-    char filename[32];
+    char filename[charLim];
     cout << "Enter filename: ";
     cin >> filename;
     ifstream is(filename);
@@ -39,15 +40,23 @@ int main(){
     cout << "Mean word length: " << meanLength << endl;
     
     //Categorizing words by length:
-    for(int i = 0; i < 32; i++){
+    for(int i = 0; i < charLim; i++){
         wordsByLength[i] = new vector<string*>;
     }
     for(int i = 0; i < words.size(); i++){
         wordsByLength[words[i]->length()]->push_back(words[i]);
     }
-    for(int i = 0; i < 32; i++){
+    for(int i = 0; i < charLim; i++){
         if(!wordsByLength[i]->empty()){
             cout << i << "-letter words: " << wordsByLength[i]->size() << endl;
         }
+    }
+    
+    //Deallocate memory
+    for(int i = 0; i < words.size(); i++){
+        delete words[i];
+    }
+    for(int i = 0; i < charLim; i++){
+        delete wordsByLength[i];
     }
 }
