@@ -1,0 +1,7 @@
+Randomly selected page numbers, from 1 to 249 (skipping repeats), in Harry Potter and the Sorcerer's Stone Book:
+8, 67, 132, 92, 78,
+214, 165, 129, 226, 193,
+105, 118, 201, 1, 103,
+177, 93, 89, 58, 101,
+147, 88, 182, 111, 2,
+167, 26, 213, 189, 248.
