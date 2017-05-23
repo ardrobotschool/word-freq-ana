@@ -23,7 +23,7 @@ int main(){
             ch = is.get();
             if(isalpha(ch)){
                 words.push_back(new string);
-                while(isalpha(ch)){
+                while(isalpha(ch) || ch== '\''){
                     *words[words.size()-1] += ch;
                     ch = is.get();
                 }
