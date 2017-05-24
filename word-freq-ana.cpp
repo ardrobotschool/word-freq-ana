@@ -23,9 +23,20 @@ int main(){
             ch = is.get();
             if(isalpha(ch)){
                 words.push_back(new string);
-                while(isalpha(ch) || ch== '\''){
-                    *words[words.size()-1] += ch;
-                    ch = is.get();
+                while(true){
+                    if(isalpha(ch)){
+                        *words[words.size()-1] += ch;
+                        ch = is.get();
+                    }
+                    else if(ch == '\''){
+                        if(isalpha((ch = is.get()))){
+                            (*words[words.size()-1] += '\'') += ch;
+                            ch = is.get();
+                        }
+                    }
+                    else{
+                        break;
+                    }
                 }
             }
         }
